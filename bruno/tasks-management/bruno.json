@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "tasks-management",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
