@@ -1,0 +1,16 @@
+meta {
+  name: createTask
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/tasks
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  description: Lots of cleaning has to be done
+  title: Clean my room
+}
