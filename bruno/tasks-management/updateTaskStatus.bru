@@ -1,0 +1,15 @@
+meta {
+  name: updateTaskStatus
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{baseUrl}}/tasks/5d45a01b-375e-4465-99d6-67bb2e1d35f8/status
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  status: IN_PROGRESS
+}

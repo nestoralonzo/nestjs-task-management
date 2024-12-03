@@ -45,6 +45,14 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## API Testing with Bruno
+The `bruno/task-management` folder contains requests and configurations for testing APIs with Bruno.
+
+To use Bruno:
+1. Install [Bruno](https://usebruno.com).
+2. Import the `bruno/task-management` folder located in root folder.
+3. Run and test endpoints directly.
+
 ## Run tests
 
 ```bash
