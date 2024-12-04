@@ -1,0 +1,16 @@
+meta {
+  name: createEmptyTask
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/tasks
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  description: 
+  title: 
+}
