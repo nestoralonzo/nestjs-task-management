@@ -1,0 +1,15 @@
+meta {
+  name: updateTaskWithNotValidStatus
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{baseUrl}}/tasks/{{taskId}}/status
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  status: NOT_VALID_ENUM_STATUS
+}
