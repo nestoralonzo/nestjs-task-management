@@ -1,0 +1,16 @@
+meta {
+  name: getTasksWithBadFilterValues
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/tasks?status=NOT_VALID_STATUS&search=room
+  body: none
+  auth: none
+}
+
+params:query {
+  status: NOT_VALID_STATUS
+  search: room
+}
