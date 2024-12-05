@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { Task } from './tasks.model';
+import { Task } from './tasks.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
@@ -18,37 +18,37 @@ import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
 
-  @Get()
-  getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
-    // if we have any filters defined, call getTasksWithFilters
-    if (Object.keys(filterDto).length) {
-      return this.tasksService.getTasksWithFilters(filterDto);
-    }
-
-    return this.tasksService.getAllTasks();
-  }
-
   @Get('/:id')
-  getTaskById(@Param('id') id: string): Task {
+  async getTaskById(@Param('id') id: string): Promise<Task> {
     return this.tasksService.getTaskById(id);
   }
 
-  @Post()
-  createTask(@Body() createTaskDto: CreateTaskDto): Task {
-    return this.tasksService.createTask(createTaskDto);
-  }
+  // @Get()
+  // getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
+  //   // if we have any filters defined, call getTasksWithFilters
+  //   if (Object.keys(filterDto).length) {
+  //     return this.tasksService.getTasksWithFilters(filterDto);
+  //   }
 
-  @Delete('/:id')
-  deleteTask(@Param('id') id: string): void {
-    return this.tasksService.deleteTask(id);
-  }
+  //   return this.tasksService.getAllTasks();
+  // }
 
-  @Patch('/:id/status')
-  updateTaskStatus(
-    @Param('id') id: string,
-    @Body() updateTaskStatusDto: UpdateTaskStatusDto,
-  ): Task {
-    const { status } = updateTaskStatusDto;
-    return this.tasksService.updateTaskStatus(id, status);
-  }
+  // @Post()
+  // createTask(@Body() createTaskDto: CreateTaskDto): Task {
+  //   return this.tasksService.createTask(createTaskDto);
+  // }
+
+  // @Delete('/:id')
+  // deleteTask(@Param('id') id: string): void {
+  //   return this.tasksService.deleteTask(id);
+  // }
+
+  // @Patch('/:id/status')
+  // updateTaskStatus(
+  //   @Param('id') id: string,
+  //   @Body() updateTaskStatusDto: UpdateTaskStatusDto,
+  // ): Task {
+  //   const { status } = updateTaskStatusDto;
+  //   return this.tasksService.updateTaskStatus(id, status);
+  // }
 }
