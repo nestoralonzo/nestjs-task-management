@@ -9,10 +9,14 @@ import { TasksRepository } from './tasks.repository';
 
 @Injectable()
 export class TasksService {
-  constructor(private readonly taskRepository: TasksRepository) {}
+  constructor(private readonly tasksRepository: TasksRepository) {}
 
   async getTaskById(id: string): Promise<Task> {
-    return this.taskRepository.getTaskById(id);
+    return this.tasksRepository.getTaskById(id);
+  }
+
+  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksRepository.createTask(createTaskDto);
   }
 
   // getAllTasks(): Task[] {
@@ -39,22 +43,6 @@ export class TasksService {
   //   }
 
   //   return tasks;
-  // }
-
-
-
-  // createTask(createTaskDto: CreateTaskDto): Task {
-  //   const { title, description } = createTaskDto;
-
-  //   const task: Task = {
-  //     id: uuid(),
-  //     title,
-  //     description,
-  //     status: TaskStatus.OPEN,
-  //   };
-  //   this.tasks.push(task);
-
-  //   return task;
   // }
 
   // deleteTask(id: string): void {

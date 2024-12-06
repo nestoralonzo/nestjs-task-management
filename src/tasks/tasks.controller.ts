@@ -23,6 +23,11 @@ export class TasksController {
     return this.tasksService.getTaskById(id);
   }
 
+  @Post()
+  async createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksService.createTask(createTaskDto);
+  }
+
   // @Get()
   // getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
   //   // if we have any filters defined, call getTasksWithFilters
@@ -31,11 +36,6 @@ export class TasksController {
   //   }
 
   //   return this.tasksService.getAllTasks();
-  // }
-
-  // @Post()
-  // createTask(@Body() createTaskDto: CreateTaskDto): Task {
-  //   return this.tasksService.createTask(createTaskDto);
   // }
 
   // @Delete('/:id')
