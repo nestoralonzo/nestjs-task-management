@@ -16,7 +16,7 @@ import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 
 @Controller('tasks')
 export class TasksController {
-  constructor(private tasksService: TasksService) {}
+  constructor(private readonly tasksService: TasksService) {}
 
   @Get('/:id')
   async getTaskById(@Param('id') id: string): Promise<Task> {
