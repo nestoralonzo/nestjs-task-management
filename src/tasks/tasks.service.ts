@@ -11,12 +11,20 @@ import { TasksRepository } from './tasks.repository';
 export class TasksService {
   constructor(private readonly tasksRepository: TasksRepository) {}
 
-  async getTaskById(id: string): Promise<Task> {
+  getTaskById(id: string): Promise<Task> {
     return this.tasksRepository.getTaskById(id);
   }
 
-  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+  createTask(createTaskDto: CreateTaskDto): Promise<Task> {
     return this.tasksRepository.createTask(createTaskDto);
+  }
+
+  async deleteTask(id: string): Promise<void> {
+    const result = await this.tasksRepository.delete(id);
+
+    if (result.affected === 0) {
+      throw new NotFoundException(`Task with ID "${id}" not found`);
+    }
   }
 
   // getAllTasks(): Task[] {
@@ -43,12 +51,6 @@ export class TasksService {
   //   }
 
   //   return tasks;
-  // }
-
-  // deleteTask(id: string): void {
-  //   const found = this.getTaskById(id);
-
-  //   this.tasks = this.tasks.filter((task) => task.id !== found.id);
   // }
 
   // updateTaskStatus(id: string, status: TaskStatus): Task {
