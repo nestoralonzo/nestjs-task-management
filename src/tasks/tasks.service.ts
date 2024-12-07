@@ -11,8 +11,16 @@ import { TasksRepository } from './tasks.repository';
 export class TasksService {
   constructor(private readonly tasksRepository: TasksRepository) {}
 
-  getTaskById(id: string): Promise<Task> {
-    return this.tasksRepository.getTaskById(id);
+  async getTaskById(id: string): Promise<Task> {
+    const found = await this.tasksRepository.findOneBy({
+      id: id,
+    });
+
+    if (!found) {
+      throw new NotFoundException(`Task with ID "${id}" not found`);
+    }
+
+    return found;
   }
 
   createTask(createTaskDto: CreateTaskDto): Promise<Task> {
@@ -25,6 +33,15 @@ export class TasksService {
     if (result.affected === 0) {
       throw new NotFoundException(`Task with ID "${id}" not found`);
     }
+  }
+
+  async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
+    const task = await this.getTaskById(id);
+
+    task.status = status;
+    await this.tasksRepository.save(task);
+
+    return task;
   }
 
   // getAllTasks(): Task[] {
@@ -51,12 +68,5 @@ export class TasksService {
   //   }
 
   //   return tasks;
-  // }
-
-  // updateTaskStatus(id: string, status: TaskStatus): Task {
-  //   const task = this.getTaskById(id);
-  //   task.status = status;
-
-  //   return task;
   // }
 }
