@@ -1,0 +1,16 @@
+meta {
+  name: SIgnInOk
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/signin
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  username: nestor
+  password: SuperSecret1
+}

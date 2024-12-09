@@ -1,0 +1,16 @@
+meta {
+  name: SIgnInBadPass
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/auth/signin
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  username: nestor
+  password: SuperSecret1zzz
+}
