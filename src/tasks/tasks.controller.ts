@@ -13,6 +13,7 @@ import { Task } from './tasks.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
+import { IdParamDto } from 'src/common/dto/id-param.dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -24,7 +25,8 @@ export class TasksController {
   }
 
   @Get('/:id')
-  async getTaskById(@Param('id') id: string): Promise<Task> {
+  async getTaskById(@Param() params: IdParamDto ): Promise<Task> {
+    const { id } = params;
     return this.tasksService.getTaskById(id);
   }
 
@@ -34,17 +36,18 @@ export class TasksController {
   }
 
   @Delete('/:id')
-  deleteTask(@Param('id') id: string): Promise<void> {
+  deleteTask(@Param() params: IdParamDto): Promise<void> {
+    const { id } = params;
     return this.tasksService.deleteTask(id);
   }
 
   @Patch('/:id/status')
   updateTaskStatus(
-    @Param('id') id: string,
+    @Param() params: IdParamDto,
     @Body() updateTaskStatusDto: UpdateTaskStatusDto,
   ): Promise<Task> {
     const { status } = updateTaskStatusDto;
-
+    const { id } = params;
     return this.tasksService.updateTaskStatus(id, status);
   }
 }
