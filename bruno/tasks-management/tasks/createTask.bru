@@ -15,6 +15,11 @@ body:form-urlencoded {
   title: Clean my room
 }
 
-vars:post-response {
-  taskId: res.body.id
+script:post-response {
+  if (res.body && res.body.id) {
+    bru.setEnvVar("id", res.body.id);
+  } else {
+    console.error("id not found in the response body");
+  }
+  
 }
