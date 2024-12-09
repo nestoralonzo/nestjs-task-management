@@ -15,6 +15,10 @@ body:form-urlencoded {
   password: SuperSecret1
 }
 
+vars:post-response {
+  jwtToken: res.body.accessToken
+}
+
 script:post-response {
   if (res.body && res.body.accessToken) {
     bru.setEnvVar("jwtToken", res.body.accessToken);
