@@ -1,0 +1,16 @@
+meta {
+  name: SIgnUpUser2
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/auth/signup
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  username: nestor2
+  password: SuperSecret2
+}

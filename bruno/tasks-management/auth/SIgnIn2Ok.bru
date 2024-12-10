@@ -1,0 +1,29 @@
+meta {
+  name: SIgnIn2Ok
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/auth/signin
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  username: nestor
+  password: SuperSecret1
+}
+
+vars:post-response {
+  jwtToken: res.body.accessToken
+}
+
+script:post-response {
+  //if (res.body && res.body.accessToken) {
+    //bru.setEnvVar("jwtToken", res.body.accessToken);
+  //} else {
+    //console.error("accessToken not found in the response body");
+  //}//
+  
+}

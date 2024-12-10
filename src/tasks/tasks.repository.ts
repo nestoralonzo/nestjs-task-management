@@ -1,8 +1,8 @@
 import { DataSource, Repository } from 'typeorm';
-import { Task } from './tasks.entity';
+import { Task } from './task.entity';
 import { Injectable } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { TaskStatus } from './tasks-status.enum';
+import { TaskStatus } from './task-status.enum';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { User } from 'src/auth/user.entity';
 
