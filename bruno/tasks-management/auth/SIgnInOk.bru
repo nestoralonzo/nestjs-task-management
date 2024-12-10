@@ -20,10 +20,10 @@ vars:post-response {
 }
 
 script:post-response {
-  if (res.body && res.body.accessToken) {
-    bru.setEnvVar("jwtToken", res.body.accessToken);
-  } else {
-    console.error("accessToken not found in the response body");
-  }
+  //if (res.body && res.body.accessToken) {
+    //bru.setEnvVar("jwtToken", res.body.accessToken);
+  //} else {
+    //console.error("accessToken not found in the response body");
+  //}//
   
 }
