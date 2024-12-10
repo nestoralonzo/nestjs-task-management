@@ -33,9 +33,12 @@ export class TasksController {
   }
 
   @Get('/:id')
-  async getTaskById(@Param() params: IdParamDto): Promise<Task> {
+  async getTaskById(
+    @Param() params: IdParamDto,
+    @GetUser() user: User,
+  ): Promise<Task> {
     const { id } = params;
-    return this.tasksService.getTaskById(id);
+    return this.tasksService.getTaskById(id, user);
   }
 
   @Post()
@@ -56,9 +59,10 @@ export class TasksController {
   updateTaskStatus(
     @Param() params: IdParamDto,
     @Body() updateTaskStatusDto: UpdateTaskStatusDto,
+    @GetUser() user: User,
   ): Promise<Task> {
     const { status } = updateTaskStatusDto;
     const { id } = params;
-    return this.tasksService.updateTaskStatus(id, status);
+    return this.tasksService.updateTaskStatus(id, status, user);
   }
 }
