@@ -5,12 +5,12 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/tasks?status=IN_PROGRESS&search=room
+  url: {{baseUrl}}/tasks?status=OPEN&search=done
   body: none
-  auth: none
+  auth: inherit
 }
 
 params:query {
-  status: IN_PROGRESS
-  search: room
+  status: OPEN
+  search: done
 }
