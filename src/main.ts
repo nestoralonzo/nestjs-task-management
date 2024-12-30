@@ -7,7 +7,7 @@ import { Logger } from '@nestjs/common';
 async function bootstrap() {
   const logger = new Logger();
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors(); // Enable CORS
   // Whenever app encounters any of those validation decorators
   // (e.g. @IsNotEmpy), it will execute validation pipes.
   app.useGlobalPipes(new ValidationPipe());
